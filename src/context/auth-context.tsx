@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import { tokenStorage } from '@/utils/token-storage'
 import { isTokenExpired } from '@/utils/jwt'
 import { login as apiLogin, logout as apiLogout } from '@/api/auth'
+import { queryClient } from '@/main'
 import type { LoginRequest, AuthState } from '@/types/auth'
 
 interface AuthContextValue extends AuthState {
@@ -29,6 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = () => {
     apiLogout()
+    queryClient.clear() // Clear all cached data on logout
     setState({ isAuthenticated: false, isLoading: false })
   }
 

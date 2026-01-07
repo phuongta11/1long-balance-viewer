@@ -6,7 +6,7 @@ import type { AuthResponse } from "@/types/auth";
 // Use proxy in dev, full URL in prod
 const BASE_URL = import.meta.env.DEV
   ? "/api"
-  : import.meta.env.VITE_API_BASE_URL || "https://api.dev.1long.com/v1";
+  : import.meta.env.VITE_API_BASE_URL || "https://api.dev.1long.vn/v1";
 
 export const apiClient = axios.create({
   baseURL: BASE_URL,
